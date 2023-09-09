@@ -21,7 +21,7 @@ public class BookstoreApplication {
 		
 		Book a = new Book("A Farewell to Arms", "Ernest Hemingway", 1929, "1232323-21", 19.90);
 		Book b = new Book("Animal Farm", "George Orwell", 1945, "2212343-5", 14.95);
-		Book c = new Book("To Shoot a Mockinbird", "Harper Lee", 1960, "951-864-028-9", 15.90);
+		Book c = new Book("To Kill a Mockinbird", "Harper Lee", 1960, "951-864-028-9", 15.90);
 	
 		repository.save(a);
 		repository.save(b);
