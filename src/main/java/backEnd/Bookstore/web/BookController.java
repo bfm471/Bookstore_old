@@ -27,16 +27,22 @@ public class BookController {
 		return("booklist");
 	}
 	
-	@GetMapping("/delete/{id}")
-	public String deleteBooks(@PathVariable("id") Long id, Model model) {
+	@GetMapping("/delete/{id}")  // poista Model ja testaa
+	public String deleteBook(@PathVariable("id") Long id, Model model) {
 		repository.deleteById(id);
-		return("redirect:/booklist");
+		return("redirect:../booklist");
 	}
 	
-	@GetMapping("add")
-	public String addStudent(Model model) {
+	@GetMapping("add") // lisää kenoviiva ja testaa
+	public String addBook(Model model) {
 		model.addAttribute("book", new Book());
 		return("addbook");
+	}
+	
+	@GetMapping("/edit/{id}")
+	public String editBook(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("book",repository.findById(id));
+		return("editbook");
 	}
 	
 	@PostMapping("/save")
