@@ -4,11 +4,13 @@ xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Booklist</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" /> <!-- ei toiminut Thymeleaf-polulla -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
 	<h1>Books</h1>
 	
-	<table>
+	<table class="table table-striped">
 		<tbody>
 			<tr>
 				<th>
@@ -23,6 +25,8 @@ xmlns:th="http://www.thymeleaf.org">
 				<th>
 				Year
 				</th>
+				<th></th>
+				<th></th>
 				
 			</tr>
 			<tr  th:each="book : ${books}">
@@ -30,12 +34,12 @@ xmlns:th="http://www.thymeleaf.org">
 				<td th:text="${book.title}"></td>
 				<td th:text="${book.isbn}"></td>
 				<td th:text="${book.publicationYear}"></td>
-				<td><a th:href="@{/delete/{id} (id=${book.id})}">Delete</a></td>
+				<td><a th:href="@{/delete/{id} (id=${book.id})}" class="btn btn-danger">Delete</a></td>
 				<td><a th:href="@{/edit/{id} (id=${book.id})}">Edit</a></td>	
 			</tr>
 		</tbody>
 	</table>
-<p><a th:href="@{/add}">Add Book</a></p>
+<p><a th:href="@{/add}" class="btn btn-success">Add Book</a></p>
 
 
 

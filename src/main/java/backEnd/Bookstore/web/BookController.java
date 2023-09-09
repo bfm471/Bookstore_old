@@ -16,6 +16,11 @@ public class BookController {
 	@Autowired
 	private BookRepository repository;
 	
+	@GetMapping("*")
+	public String goTo() {
+		return("redirect:/booklist");
+	}
+	
 	@GetMapping("/index")
 	public String getStarted() {
 		return("index");
