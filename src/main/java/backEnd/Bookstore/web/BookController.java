@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import backEnd.Bookstore.domain.Book;
 import backEnd.Bookstore.domain.BookRepository;
+import backEnd.Bookstore.domain.CategoryRepository;
 
 @Controller
 public class BookController {
 	
 	@Autowired
 	private BookRepository repository;
+	@Autowired CategoryRepository catrepository;
 	
 	@GetMapping("/*")
 	public String goTo() {
@@ -41,12 +43,14 @@ public class BookController {
 	@GetMapping("/add")
 	public String addBook(Model model) {
 		model.addAttribute("book", new Book());
+		model.addAttribute("categories", catrepository.findAll());
 		return("addbook");
 	}
 	
 	@GetMapping("/edit/{id}")
 	public String editBook(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("book",repository.findById(id));
+		model.addAttribute("categories", catrepository.findAll());
 		return("editbook");
 	}
 	
@@ -57,16 +61,3 @@ public class BookController {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
