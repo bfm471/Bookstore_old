@@ -16,7 +16,7 @@ public class BookController {
 	@Autowired
 	private BookRepository repository;
 	
-	@GetMapping("*")
+	@GetMapping("/*")
 	public String goTo() {
 		return("redirect:/booklist");
 	}
@@ -32,13 +32,13 @@ public class BookController {
 		return("booklist");
 	}
 	
-	@GetMapping("/delete/{id}")  // poista Model ja testaa
-	public String deleteBook(@PathVariable("id") Long id, Model model) {
+	@GetMapping("/delete/{id}") 
+	public String deleteBook(@PathVariable("id") Long id) {
 		repository.deleteById(id);
-		return("redirect:../booklist");
+		return("redirect:/booklist");
 	}
 	
-	@GetMapping("add") // lisää kenoviiva ja testaa
+	@GetMapping("/add")
 	public String addBook(Model model) {
 		model.addAttribute("book", new Book());
 		return("addbook");
